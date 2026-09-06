@@ -228,7 +228,7 @@ header.scrolled{
     position:absolute;
     inset:0;
 
-    background:url("images/hero.jpg") center center/cover no-repeat;
+    background:url("hero.jpg") center center/cover no-repeat;
 
     animation:heroZoom 16s ease-in-out infinite alternate;
 
