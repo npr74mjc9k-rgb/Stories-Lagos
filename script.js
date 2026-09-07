@@ -1,24 +1,10 @@
 /* =========================================
-   STORIES LAGOS V3 — CLIENT EDITION
+   STORIES LAGOS V4
    COMPLETE SCRIPT
 ========================================= */
 
-/* =========================
-   NAVBAR SCROLL EFFECT
-========================= */
-const header = document.querySelector("header");
+/* ---------------- LOADER ---------------- */
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 40) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
-
-/* =========================
-   PREMIUM LOADER
-========================= */
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader");
 
@@ -27,11 +13,112 @@ window.addEventListener("load", () => {
   }, 1800);
 });
 
-/* =========================
-   SCROLL REVEAL
-========================= */
-const revealItems = document.querySelectorAll(
-  ".experience,.stats,.menu,.events,.gallery,.reservation,.footer"
+/* ---------------- HEADER SCROLL ---------------- */
+
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 60) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+/* ---------------- CURSOR GLOW ---------------- */
+
+const glow = document.querySelector(".cursor-glow");
+
+window.addEventListener("pointermove", (e) => {
+  if (!glow) return;
+
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+/* ---------------- MOBILE MENU ---------------- */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+const menuOverlay = document.querySelector(".menu-overlay");
+const closeMenuBtn = document.querySelector(".close-menu");
+
+function openMenu() {
+  mobileMenu.classList.add("active");
+  menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove("active");
+  menuOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+menuToggle.addEventListener("click", openMenu);
+closeMenuBtn.addEventListener("click", closeMenu);
+menuOverlay.addEventListener("click", closeMenu);
+
+document.querySelectorAll(".mobile-menu a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
+
+/* ---------------- RESERVATION POPUP ---------------- */
+
+const popup = document.querySelector(".booking-popup");
+const popupOverlay = document.querySelector(".booking-overlay");
+const popupClose = document.querySelector(".close-popup");
+
+document.querySelectorAll(".reserve-btn-popup").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    popup.classList.add("active");
+    popupOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function hidePopup() {
+  popup.classList.remove("active");
+  popupOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+popupClose.addEventListener("click", hidePopup);
+popupOverlay.addEventListener("click", hidePopup);
+
+/* ESC key closes popup */
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    hidePopup();
+    closeMenu();
+  }
+});
+
+/* ---------------- SMOOTH SCROLL ---------------- */
+
+document.querySelectorAll("a[href^='#']").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    if (!target) return;
+
+    e.preventDefault();
+
+    window.scrollTo({
+      top: target.offsetTop - 70,
+      behavior: "smooth"
+    });
+  });
+});
+
+/* ---------------- SCROLL REVEAL ---------------- */
+
+const revealSections = document.querySelectorAll(
+  ".experience, .stats, .menu, .events, .gallery, .reservation, .footer"
 );
 
 const revealObserver = new IntersectionObserver(
@@ -45,23 +132,23 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-revealItems.forEach((item) => revealObserver.observe(item));
+revealSections.forEach((section) => revealObserver.observe(section));
 
-/* =========================
-   ANIMATED COUNTERS
-========================= */
+/* ---------------- COUNTER ANIMATION ---------------- */
+
 const counters = document.querySelectorAll(".counter");
 
 const counterObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
+
       if (!entry.isIntersecting) return;
 
       const counter = entry.target;
       const target = Number(counter.dataset.target);
-      let current = 0;
 
-      const increment = target / 100;
+      let current = 0;
+      const increment = target / 80;
 
       const timer = setInterval(() => {
         current += increment;
@@ -72,9 +159,11 @@ const counterObserver = new IntersectionObserver(
         }
 
         counter.textContent = Math.floor(current).toLocaleString();
-      }, 20);
+
+      }, 25);
 
       counterObserver.unobserve(counter);
+
     });
   },
   { threshold: 0.5 }
@@ -82,112 +171,16 @@ const counterObserver = new IntersectionObserver(
 
 counters.forEach((counter) => counterObserver.observe(counter));
 
-/* =========================
-   LUXURY MOBILE MENU
-========================= */
-const menuBtn = document.querySelector(".menu-toggle");
-const mobileMenu = document.querySelector(".mobile-menu");
-const menuOverlay = document.querySelector(".menu-overlay");
-const closeMenuBtn = document.querySelector(".close-menu");
-const mobileLinks = document.querySelectorAll(".mobile-menu a");
+/* ---------------- HERO PARALLAX ---------------- */
 
-function closeMobileMenu() {
-  mobileMenu.classList.remove("active");
-  menuOverlay.classList.remove("active");
-  document.body.style.overflow = "auto";
-}
-
-menuBtn?.addEventListener("click", () => {
-  mobileMenu.classList.add("active");
-  menuOverlay.classList.add("active");
-  document.body.style.overflow = "hidden";
-});
-
-closeMenuBtn?.addEventListener("click", closeMobileMenu);
-menuOverlay?.addEventListener("click", closeMobileMenu);
-
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", closeMobileMenu);
-});
-
-/* =========================
-   RESERVATION POPUP
-========================= */
-const bookingPopup = document.querySelector(".booking-popup");
-const bookingOverlay = document.querySelector(".booking-overlay");
-const reserveButtons = document.querySelectorAll(".reserve-btn-popup");
-const popupClose = document.querySelector(".close-popup");
-
-reserveButtons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    bookingPopup.classList.add("active");
-    bookingOverlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-  });
-});
-
-function closePopup() {
-  bookingPopup.classList.remove("active");
-  bookingOverlay.classList.remove("active");
-  document.body.style.overflow = "auto";
-}
-
-popupClose?.addEventListener("click", closePopup);
-bookingOverlay?.addEventListener("click", closePopup);
-
-/* =========================
-   GOLD CURSOR GLOW
-========================= */
-const glow = document.querySelector(".cursor-glow");
-
-if (window.innerWidth > 900) {
-  window.addEventListener("pointermove", (e) => {
-    glow.style.left = `${e.clientX}px`;
-    glow.style.top = `${e.clientY}px`;
-  });
-} else {
-  window.addEventListener("touchmove", (e) => {
-    const touch = e.touches[0];
-
-    glow.style.opacity = "1";
-    glow.style.left = `${touch.clientX}px`;
-    glow.style.top = `${touch.clientY}px`;
-  });
-
-  window.addEventListener("touchend", () => {
-    glow.style.opacity = "0";
-  });
-}
-
-/* =========================
-   HERO PARALLAX
-========================= */
-const hero = document.querySelector(".hero");
+const heroImage = document.querySelector(".hero-image");
 
 window.addEventListener("scroll", () => {
+
   const offset = window.scrollY;
 
-  if (hero) {
-    hero.style.backgroundPositionY = `${offset * 0.35}px`;
+  if (heroImage) {
+    heroImage.style.transform = \`scale(1.08) translateY(\${offset * 0.12}px)\`;
   }
-});
 
-/* =========================
-   SMOOTH SCROLL
-========================= */
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const target = document.querySelector(link.getAttribute("href"));
-
-    if (!target) return;
-
-    e.preventDefault();
-
-    window.scrollTo({
-      top: target.offsetTop - 70,
-      behavior: "smooth",
-    });
-  });
 });
