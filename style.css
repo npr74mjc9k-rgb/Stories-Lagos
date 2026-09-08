@@ -1277,3 +1277,45 @@ section{
     border:1px solid rgba(212,175,55,.15);
 
     display:flex;
+    /* ================= LOGO FIX ================= */
+
+.logo img{
+    width:145px;
+    height:auto;
+    display:block;
+}
+
+.mobile-logo img{
+    width:170px;
+    height:auto;
+    display:block;
+}
+
+/* Loader Logo */
+
+.loader-logo img{
+    width:220px;
+    max-width:75vw;
+    display:block;
+}
+
+/* Hide mobile menu on desktop */
+
+.mobile-menu,
+.menu-overlay{
+    display:none;
+}
+
+/* Mobile only */
+
+@media (max-width:900px){
+
+    .mobile-menu{
+        display:flex;
+    }
+
+    .menu-overlay{
+        display:block;
+    }
+
+}
