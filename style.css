@@ -103,7 +103,6 @@ section{
     from{transform:translateX(-150%);}
     to{transform:translateX(320%);}
 }
-}
 /* ---------------- CURSOR GLOW ---------------- */
 
 .cursor-glow{
