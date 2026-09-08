@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     loader.classList.add("hide");
-  }, 1800);
+  }, 1600);
 });
 
 /* ---------------- HEADER SCROLL ---------------- */
