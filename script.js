@@ -1,86 +1,46 @@
-/* =========================================
-   STORIES LAGOS V4
-========================================= */
-
-// Loader
+// LOADER
 window.addEventListener("load", () => {
-    const loader = document.querySelector(".loader");
+  const loader = document.querySelector(".loader");
 
-    setTimeout(() => {
-        loader.classList.add("hide");
-    }, 1500);
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 1800);
 });
 
-// Navbar scroll
-const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
-    }
-});
-
-// Mobile Menu
+// MOBILE MENU
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector(".mobile-menu");
 const menuOverlay = document.querySelector(".menu-overlay");
 const closeMenu = document.querySelector(".close-menu");
+const menuLinks = document.querySelectorAll(".mobile-menu a");
 
-menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.add("active");
-    menuOverlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-});
-
-function hideMenu() {
-    mobileMenu.classList.remove("active");
-    menuOverlay.classList.remove("active");
-    document.body.style.overflow = "auto";
+function openMenu() {
+  mobileMenu.classList.add("active");
+  menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
 }
 
-closeMenu.addEventListener("click", hideMenu);
-menuOverlay.addEventListener("click", hideMenu);
-
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", hideMenu);
-});
-
-// Booking Popup
-const popup = document.querySelector(".booking-popup");
-const popupOverlay = document.querySelector(".booking-overlay");
-const popupClose = document.querySelector(".close-popup");
-
-document.querySelectorAll(".reserve-btn-popup").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        popup.classList.add("active");
-        popupOverlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-});
-
-function closePopup() {
-    popup.classList.remove("active");
-    popupOverlay.classList.remove("active");
-    document.body.style.overflow = "auto";
+function closeMobileMenu() {
+  mobileMenu.classList.remove("active");
+  menuOverlay.classList.remove("active");
+  document.body.style.overflow = "";
 }
 
-popupClose.addEventListener("click", closePopup);
-popupOverlay.addEventListener("click", closePopup);
+menuToggle.addEventListener("click", openMenu);
+closeMenu.addEventListener("click", closeMobileMenu);
+menuOverlay.addEventListener("click", closeMobileMenu);
 
-// Scroll Reveal
-const sections = document.querySelectorAll(
-    ".experience,.stats,.menu,.events,.gallery,.reservation,.footer"
-);
+menuLinks.forEach(link => {
+  link.addEventListener("click", closeMobileMenu);
+});
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show-section");
-        }
-    });
-}, { threshold: 0.15 });
+// NAVBAR SCROLL EFFECT
+const header = document.querySelector(".header");
 
-sections.forEach(section => observer.observe(section));
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 40) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
