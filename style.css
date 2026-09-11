@@ -1492,3 +1492,41 @@ section{
         min-height:320px;
     }
 }
+/* ========= FINAL MOBILE SPACING (SAFE) ========= */
+
+@media (max-width: 900px){
+
+  .hero-content,
+  .experience-content,
+  .menu-heading,
+  .events-heading,
+  .gallery-heading,
+  .reservation-left{
+      padding:0 8px;
+  }
+
+  .menu-card,
+  .event-card,
+  .stats-card,
+  .feature-box{
+      margin-bottom:8px;
+  }
+
+  .menu-content,
+  .event-info{
+      padding:24px;
+  }
+
+  .gallery-grid{
+      gap:14px;
+  }
+
+  .experience{
+      gap:50px;
+  }
+
+  .stats{
+      gap:16px;
+  }
+
+}
