@@ -159,3 +159,15 @@ if (window.innerWidth > 900) {
     glow.style.top = e.clientY + "px";
   });
 }
+/* HERO AUTO SLIDESHOW */
+
+const heroSlides = document.querySelectorAll(".hero-slide");
+let currentHero = 0;
+
+setInterval(() => {
+  heroSlides[currentHero].classList.remove("active");
+
+  currentHero = (currentHero + 1) % heroSlides.length;
+
+  heroSlides[currentHero].classList.add("active");
+}, 5000); // Changes every 5 seconds

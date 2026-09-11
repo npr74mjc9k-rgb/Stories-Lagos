@@ -347,14 +347,38 @@ section{
 
 }
 
-.hero-image{
+/* HERO SLIDESHOW */
 
+.hero-slideshow{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.hero-slide{
     position:absolute;
     inset:0;
 
-    background:url("hero.jpg") center center/cover no-repeat;
-    transform:scale(1.08);
+    background-size:cover;
+    background-position:center;
 
+    opacity:0;
+    transition:opacity 1.5s ease;
+
+    transform:scale(1.08);
+    animation:heroZoom 15s ease-in-out infinite alternate;
+}
+
+.hero-slide.active{
+    opacity:1;
+}
+
+.hero-slide:nth-child(1){
+    background-image:url("hero1.jpg");
+}
+
+.hero-slide:nth-child(2){
+    background-image:url("hero2.jpg");
 }
 
 .hero-overlay{
