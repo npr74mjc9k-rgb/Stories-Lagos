@@ -1139,8 +1139,8 @@ section{
 
 .footer{
     background:#04133A;
-    margin-top:100px;
-    padding:80px 24px 35px;
+    margin-top:60px;
+    padding:55px 22px 25px;
     border-top:1px solid rgba(212,175,55,.12);
 }
 
@@ -1150,7 +1150,7 @@ section{
 
     display:grid;
     grid-template-columns:1.5fr 1fr 1fr;
-    gap:50px;
+    gap:28px;
 }
 
 .footer-brand h2{
@@ -1185,7 +1185,7 @@ section{
 
 .footer-divider{
     width:min(1200px,92%);
-    margin:50px auto 28px;
+    margin:30px auto 20px;
     height:1px;
     background:rgba(255,255,255,.08);
 }
@@ -1460,11 +1460,14 @@ section{
 }
 
 .map-container{
-    overflow:hidden;
-    border-radius:28px;
-    border:1px solid rgba(212,175,55,.15);
+    width:100%;
+    height:260px;
     min-height:260px;
+    border-radius:28px;
+    overflow:hidden;
+    border:1px solid rgba(212,175,55,.15);
 }
+
 
 .map-container iframe{
     width:100%;
@@ -1491,42 +1494,4 @@ section{
     .map-container{
         min-height:300px;
     }
-}
-/* ========= FINAL MOBILE SPACING (SAFE) ========= */
-
-@media (max-width: 900px){
-
-  .hero-content,
-  .experience-content,
-  .menu-heading,
-  .events-heading,
-  .gallery-heading,
-  .reservation-left{
-      padding:0 8px;
-  }
-
-  .menu-card,
-  .event-card,
-  .stats-card,
-  .feature-box{
-      margin-bottom:8px;
-  }
-
-  .menu-content,
-  .event-info{
-      padding:24px;
-  }
-
-  .gallery-grid{
-      gap:14px;
-  }
-
-  .experience{
-      gap:50px;
-  }
-
-  .stats{
-      gap:16px;
-  }
-
 }
