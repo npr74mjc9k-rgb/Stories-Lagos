@@ -1463,7 +1463,7 @@ section{
     overflow:hidden;
     border-radius:28px;
     border:1px solid rgba(212,175,55,.15);
-    min-height:460px;
+    min-height:260px;
 }
 
 .map-container iframe{
@@ -1491,4 +1491,42 @@ section{
     .map-container{
         min-height:300px;
     }
+}
+/* ========= FINAL MOBILE SPACING (SAFE) ========= */
+
+@media (max-width: 900px){
+
+  .hero-content,
+  .experience-content,
+  .menu-heading,
+  .events-heading,
+  .gallery-heading,
+  .reservation-left{
+      padding:0 8px;
+  }
+
+  .menu-card,
+  .event-card,
+  .stats-card,
+  .feature-box{
+      margin-bottom:8px;
+  }
+
+  .menu-content,
+  .event-info{
+      padding:24px;
+  }
+
+  .gallery-grid{
+      gap:14px;
+  }
+
+  .experience{
+      gap:50px;
+  }
+
+  .stats{
+      gap:16px;
+  }
+
 }
